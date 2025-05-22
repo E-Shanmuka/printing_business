@@ -7,6 +7,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Make the default icon in header circular */
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;     /* Make it round */
+  object-fit: cover;      /* Ensures the image covers circle cleanly */
+  margin-right: 8px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Preview image container (initially hidden, doesn't occupy space) */
+#unique-large-image-container {
+  display: none;          /* Hidden by default */
+  position: absolute;     /* So it doesn't take layout space */
+  top: 60px;              /* Adjust based on header height */
+  left: 20%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Medium-sized preview image */
+#unique-large-image {
+  width: 250px;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Close button styling */
+#unique-close-button {
+  margin-top: 10px;
+  background: #c00;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
 #secret-admin-link {
     position: fixed;
     bottom: 4px;
@@ -353,19 +398,28 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <a href="/" class="logo">E.Prabhakar @Printing Services</a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+  <div class="header-content">
+    <div class="logo-container">
+      <img src="dad.png" alt="icon" class="logo-icon" id="unique-icon-click">
+      <a href="/" class="logo">E.Prabhakar @Printing Services</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Full-size image display -->
+<div id="unique-large-image-container">
+  <img src="dad.png" id="unique-large-image" alt="Large Icon">
+  <br>
+  <button id="unique-close-button">Close</button>
+</div>
 
     <div class="news-ticker">
         <div class="ticker-content">
@@ -579,6 +633,23 @@
 
         // Load services when page loads
         loadServices();
+
+
+        // Isolated image show/hide logic
+  (function () {
+    const icon = document.getElementById('unique-icon-click');
+    const container = document.getElementById('unique-large-image-container');
+    const closeBtn = document.getElementById('unique-close-button');
+
+    icon.addEventListener('click', function () {
+      container.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', function () {
+      container.style.display = 'none';
+    });
+  })();
+
     </script>
 </body>
 </html> 
