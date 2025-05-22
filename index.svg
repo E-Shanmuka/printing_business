@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shannu Printing Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .service-img { width: 100%; height: 200px; object-fit: cover; }
+    .discount { color: red; font-weight: bold; }
+    footer { background-color: #f8f9fa; padding: 10px; text-align: center; }
+    @media (max-width: 768px) { body { font-size: 16px; } }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="text-center mb-4">Shannu Printing Services (24x7)</h1>
+    <p class="text-center">📍B.RAYAPURAM(V), BULLASAMUDRAM(P), MADAKASIRA(M), SRI SATHYA SAI(D), ANDHRAPRADESH, 515303<br>📧 shannuozshannu@gmail.com | 📞 9951117884 / 9515490871</p>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Example Services -->
+      <div class="col">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top service-img" alt="Passport Photos">
+          <div class="card-body">
+            <h5 class="card-title">Passport Photos</h5>
+            <p>₹40 for 4 photos <span class="discount">(₹30 for 8)</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top service-img" alt="A4 Print">
+          <div class="card-body">
+            <h5 class="card-title">A4 Size Printing</h5>
+            <p>Color: ₹20 | B/W: ₹5 | Glossy: ₹25</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top service-img" alt="Frames">
+          <div class="card-body">
+            <h5 class="card-title">Frames</h5>
+            <p>5x7: ₹70 | A4: ₹120</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more services similarly -->
+
+      <div class="col">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top service-img" alt="Keychains">
+          <div class="card-body">
+            <h5 class="card-title">Keychains</h5>
+            <p>₹60 each (Photo)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top service-img" alt="Photo Editing">
+          <div class="card-body">
+            <h5 class="card-title">Photo & Doc Editing</h5>
+            <p>₹30 to ₹100 depending on work</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top service-img" alt="Applications">
+          <div class="card-body">
+            <h5 class="card-title">Online Applications</h5>
+            <p>₹50 per application</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="mt-5">
+      <h3>Contact Us</h3>
+      <form id="contactForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phone" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Gmail</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="mt-5">
+    <p>&copy; 2025 Shannu Printing Services. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
+  document.getElementById("contactForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const res = await fetch('/api/reach', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, email, message })
+    });
+
+    const data = await res.json();
+    alert(data.message);
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
